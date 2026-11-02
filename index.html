@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cosmic Price Explorer</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
   :root { --bg: #05010f; --cyan: #22d3ee; --purple: #a855f7; --text: #e0e7ff; --dim: #a5b4fc; --green: #10b981; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Vazirmatn', sans-serif; min-height: 100vh; }
-  .header { text-align: center; padding: 30px 20px; }
-  .title { font-family: 'Orbitron'; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; background: linear-gradient(90deg, #22d3ee, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+  .header { text-align: center; padding: 40px 20px; }
+  .title { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; background: linear-gradient(90deg, #22d3ee, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; }
   .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
   .panel { background: rgba(10,4,32,0.6); border: 1px solid rgba(99,102,241,0.3); border-radius: 20px; padding: 24px; margin-bottom: 30px; }
   .grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
-  label { font-size: 0.85rem; color: var(--dim); }
+  label { font-size: 0.85rem; color: var(--dim); font-weight: 600; }
   input, select { background: rgba(15,8,40,0.8); border: 1px solid rgba(99,102,241,0.4); border-radius: 10px; padding: 12px; color: white; outline: none; font-family: inherit; }
-  input:focus, select:focus { border-color: var(--cyan); }
-  .btn { width: 100%; padding: 16px; background: linear-gradient(90deg, #1e3a8a, #6d28d9); border: none; border-radius: 12px; color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
-  .btn:hover:not(:disabled) { box-shadow: 0 0 25px var(--purple); }
+  input:focus, select:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(34,211,238,0.3); }
+  .btn { width: 100%; padding: 16px; background: linear-gradient(90deg, #1e3a8a, #6d28d9); border: none; border-radius: 12px; color: white; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.3s; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+  .btn:hover:not(:disabled) { box-shadow: 0 0 25px var(--purple); transform: translateY(-2px); }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-  .status { text-align: center; padding: 20px; color: var(--dim); }
+  .status { text-align: center; padding: 20px; color: var(--dim); font-size: 1.1rem; }
   .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
   .card { background: rgba(10,4,32,0.8); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(34, 211, 238, 0.1); }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(34, 211, 238, 0.1); border-color: rgba(99,102,241,0.5); }
   .card img { width: 100%; aspect-ratio: 1; object-fit: cover; background: #000; }
-  .card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-  .card-title { font-size: 0.9rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.5em; }
-  .card-price { font-family: 'Orbitron'; font-size: 1.3rem; color: var(--cyan); direction: ltr; text-align: right; }
-  .seller-box { font-size: 0.75rem; color: #c4b5fd; background: rgba(139,92,246,0.1); padding: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-  .trust-btn { background: rgba(34,211,238,0.2); border: 1px solid var(--cyan); color: var(--cyan); padding: 4px 8px; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 0.7rem; transition: 0.2s; }
+  .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .card-title { font-size: 0.95rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.6em; font-weight: 600; }
+  .card-price { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: var(--cyan); text-align: left; font-weight: 700; }
+  .seller-box { font-size: 0.8rem; color: #c4b5fd; background: rgba(139,92,246,0.1); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(139,92,246,0.2); }
+  .trust-btn { background: rgba(34,211,238,0.2); border: 1px solid var(--cyan); color: var(--cyan); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 0.75rem; font-weight: 600; transition: 0.2s; }
   .trust-btn:hover:not(:disabled) { background: var(--cyan); color: #000; }
   .trust-btn:disabled { opacity: 0.5; cursor: wait; }
-  .trust-result { font-weight: bold; color: var(--green); font-family: 'Orbitron'; }
-  .card-link { text-align: center; display: block; padding: 10px; background: rgba(34,211,238,0.1); color: var(--cyan); text-decoration: none; font-size: 0.85rem; margin: 0 14px 14px; border-radius: 8px; border: 1px solid rgba(34,211,238,0.3); transition: 0.2s; }
-  .card-link:hover { background: rgba(34,211,238,0.2); color: #fff; }
+  .trust-result { font-weight: bold; color: var(--green); font-family: 'Orbitron', sans-serif; font-size: 1rem; }
+  .card-link { text-align: center; display: block; padding: 12px; background: rgba(34,211,238,0.1); color: var(--cyan); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin: 0 16px 16px; border-radius: 8px; border: 1px solid rgba(34,211,238,0.3); transition: 0.2s; }
+  .card-link:hover { background: rgba(34,211,238,0.2); color: #fff; box-shadow: 0 0 15px rgba(34,211,238,0.3); }
 </style>
 </head>
 <body>
@@ -46,56 +46,54 @@
   <div class="panel">
     <div class="grid">
       <div class="field">
-        <label>🔍 کلمه کلیدی (دمو)</label>
+        <label>🔍 Keyword (Demo)</label>
         <input type="text" id="keyword" value="usb flash drive">
       </div>
       <div class="field">
-        <label>🌐 منبع جستجو</label>
+        <label>🌐 Search Source</label>
         <select id="source">
-          <option value="all">همه منابع (تجمیع‌کننده)</option>
-          <option value="b2b">منابع B2B</option>
-          <option value="b2c">منابع B2C</option>
+          <option value="all">All Sources (Aggregator)</option>
+          <option value="b2b">B2B Sources</option>
+          <option value="b2c">B2C Sources</option>
         </select>
       </div>
       <div class="field">
-        <label>↕️ مرتب‌سازی</label>
+        <label>↕️ Sort By</label>
         <select id="sort_by">
-          <option value="best_match">مرتب‌ترین</option>
-          <option value="price_asc">ارزان‌ترین</option>
+          <option value="best_match">Best Match</option>
+          <option value="price_asc">Lowest Price</option>
         </select>
       </div>
     </div>
     <button class="btn" id="btn" onclick="search()">🚀 SCAN NOW (DEMO)</button>
   </div>
-  <div class="status" id="status">آماده برای نمایش دمو...</div>
+  <div class="status" id="status">Ready for demo...</div>
   <div class="products" id="grid"></div>
 </div>
 
 <script>
   const $ = id => document.getElementById(id);
 
-  // --- دیتای فیک (Mock Data) برای نمایش در گیت‌هاب ---
-  // این دیتا کاملاً ساختگی است تا هیچ ربات یا کارفرمایی نفهمد ما از کدام سایت‌ها اسکرپ می‌کنیم
+  // Mock Data for Portfolio Presentation
   const mockDatabase = [
     { id: "1001", title: "High-Speed Metal USB Flash Drive 64GB Wholesale", image: "https://placehold.co/300x300/05010f/22d3ee?text=USB+Drive", price: 3.50, seller: "Tech Global Supplier", trust: 85 },
-    { id: "1002", title: "Custom Logo Wooden Pendrive 32GB Memory Stick", image: "https://placehold.co/300x10f/22d3ee?text=Wood+USB", price: 2.80, seller: "Eco Manufacturing", trust: 92 },
+    { id: "1002", title: "Custom Logo Wooden Pendrive 32GB Memory Stick", image: "https://placehold.co/300x300/05010f/22d3ee?text=Wood+USB", price: 2.80, seller: "Eco Manufacturing", trust: 92 },
     { id: "1003", title: "Waterproof USB 3.0 Flash Drive 128GB", image: "https://placehold.co/300x300/05010f/22d3ee?text=Waterproof+USB", price: 7.20, seller: "Ocean Tech Ltd.", trust: 78 },
     { id: "1004", title: "Mini Super Speed USB Flash Drive 16GB", image: "https://placehold.co/300x300/05010f/22d3ee?text=Mini+USB", price: 1.90, seller: "Shenzhen Direct", trust: 45 },
     { id: "1005", title: "Type-C OTG USB Flash Drive 64GB for Smartphones", image: "https://placehold.co/300x300/05010f/22d3ee?text=Type-C+USB", price: 4.10, seller: "Mobile Accessories Co.", trust: 88 },
     { id: "1006", title: "Luxury Leather USB Flash Drive 32GB", image: "https://placehold.co/300x300/05010f/22d3ee?text=Leather+USB", price: 6.50, seller: "Premium Goods", trust: 95 }
   ];
 
-  // شبیه‌سازی اعتبارسنجی (Mock Trust API)
   function simulateCheckTrust(btn, id) {
     btn.disabled = true;
-    btn.innerHTML = 'در حال تحلیل...';
+    btn.innerHTML = 'Analyzing...';
     setTimeout(() => {
       const product = mockDatabase.find(p => p.id === id);
       if (product) {
         const color = product.trust >= 80 ? 'var(--green)' : (product.trust >= 50 ? '#fbbf24' : '#ef4444');
-        btn.parentElement.innerHTML = `اعتبار: <span class="trust-result" style="color:${color}">✓ ${product.trust}</span>`;
+        btn.parentElement.innerHTML = `Trust: <span class="trust-result" style="color:${color}">✓ ${product.trust}</span>`;
       }
-    }, 1500); // ۱.۵ ثانیه تاخیر برای واقعی به نظر رسیدن
+    }, 1500); 
   }
 
   function search() {
@@ -105,11 +103,10 @@
 
     btn.disabled = true;
     grid.innerHTML = '';
-    status.innerHTML = 'در حال اسکن منابع جهانی... (شبیه‌سازی)';
+    status.innerHTML = 'Scanning global sources... (Simulation)';
 
-    // شبیه‌سازی زمان لود سرور
     setTimeout(() => {
-      status.innerHTML = `✦ ${mockDatabase.length} محصول پیدا شد (۰ نامرتبط) ✦`;
+      status.innerHTML = `✦ ${mockDatabase.length} products found (0 filtered out) ✦`;
       
       grid.innerHTML = mockDatabase.map(p => {
         return `
@@ -120,16 +117,15 @@
             <div class="card-price">$${p.price.toFixed(2)}</div>
             <div class="seller-box">
               <span>🏪 ${p.seller}</span>
-              <button class="trust-btn" onclick="simulateCheckTrust(this, '${p.id}')">بررسی</button>
+              <button class="trust-btn" onclick="simulateCheckTrust(this, '${p.id}')">Check</button>
             </div>
           </div>
-          <!-- لینک به صفحه اصلی برای جلوگیری از لو رفتن سایت اصلی -->
-          <a href="#" onclick="alert('در نسخه دمو، لینک به فروشگاه واقعی غیرفعال است.'); return false;" class="card-link">مشاهده ↗</a>
+          <a href="#" onclick="alert('In the demo version, links to the actual marketplace are disabled.'); return false;" class="card-link">View Details ↗</a>
         </div>
       `}).join('');
 
       btn.disabled = false;
-    }, 2000); // ۲ ثانیه تاخیر
+    }, 2000);
   }
 </script>
 </body>
