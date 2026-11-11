@@ -23,4 +23,4 @@ This project is a fully functional prototype designed to aggregate product data 
 ## ⚠️ Disclaimer
 *This repository is for **Portfolio and Demonstration purposes only**. The actual scraping logic, API endpoints, and target market credentials have been removed to protect proprietary business logic. The frontend code provided here includes a mocked API response to demonstrate the user interface and user experience.*
 
-https://youtu.be/Nf4CwXVl67A
+video link: https://youtu.be/Nf4CwXVl67A
