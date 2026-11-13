@@ -2,7 +2,7 @@
 Multi-Source B2B/B2C Data Aggregator (Demo)
 # 🚀 Cosmic Price Explorer (Multi-Source Data Aggregator)
 
-<img width="1440" height="900" alt="Screenshot (236)" src="https://github.com/user-attachments/assets/62660066-43bc-4598-bac3-5d4e0e117705" />
+<img width="1440" height="900" alt="Screenshot (239)" src="https://github.com/user-attachments/assets/014fc587-7ab7-4244-8c58-86417a6b5f60" />
 
 A high-performance, stealth-focused data aggregation engine and web interface built with Python (FastAPI) and Playwright.
 
